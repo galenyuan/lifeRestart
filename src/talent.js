@@ -93,16 +93,20 @@ class Talent {
             else talentList[grade].push({ grade, name, description, id });
         }
 
-        return new Array(10)
-            .fill(1).map((v, i)=>{
-                if(!i && include) return include;
-                let grade = randomGrade();
-                while(talentList[grade].length == 0) grade--;
-                const length = talentList[grade].length;
+        const result = new Array(10)
+        .fill(1).map((v, i)=>{
+            if(!i && include) return include;
+            let grade = randomGrade();
+            while(talentList[grade].length == 0) grade--;
+            const length = talentList[grade].length;
 
-                const random = Math.floor(Math.random()*length) % length;
-                return talentList[grade].splice(random,1)[0];
-            });
+            const random = Math.floor(Math.random()*length) % length;
+            return talentList[grade].splice(random,1)[0];
+        });
+
+        result.push(talentList[3].find(item => item.id == 1048))
+
+        return result
     }
 
     allocationAddition(talents) {

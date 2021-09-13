@@ -11,7 +11,7 @@ class App{
     #pages;
     #currentPage;
     #talentSelected = new Set();
-    #totalMax=20;
+    #totalMax=200;
     #isEnd = false;
     #selectedExtendTalent = null;
     #hintTimeout;
@@ -205,7 +205,7 @@ class App{
                     return;
                 }
                 talentPage.find('#next').hide()
-                this.#totalMax = 20 + this.#life.getTalentAllocationAddition(Array.from(this.#talentSelected).map(({id})=>id));
+                this.#totalMax = 200 + this.#life.getTalentAllocationAddition(Array.from(this.#talentSelected).map(({id})=>id));
                 this.switch('property');
             })
 
@@ -288,10 +288,10 @@ class App{
             return {group, get, set};
         }
 
-        groups.CHR = getBtnGroups("颜值", 0, 10); // 颜值 charm CHR
-        groups.INT = getBtnGroups("智力", 0, 10); // 智力 intelligence INT
-        groups.STR = getBtnGroups("体质", 0, 10); // 体质 strength STR
-        groups.MNY = getBtnGroups("家境", 0, 10); // 家境 money MNY
+        groups.CHR = getBtnGroups("颜值", 0, 100); // 颜值 charm CHR
+        groups.INT = getBtnGroups("智力", 0, 100); // 智力 intelligence INT
+        groups.STR = getBtnGroups("体质", 0, 100); // 体质 strength STR
+        groups.MNY = getBtnGroups("家境", 0, 100); // 家境 money MNY
 
         const ul = propertyPage.find('#propertyAllocation');
 
@@ -487,7 +487,7 @@ class App{
                 this.#life.talentExtend(this.#selectedExtendTalent);
                 this.#selectedExtendTalent = null;
                 this.#talentSelected.clear();
-                this.#totalMax = 20;
+                this.#totalMax = 200;
                 this.#isEnd = false;
                 this.switch('index');
             });
@@ -617,7 +617,7 @@ class App{
                     this.#currentPage = 'talent';
                     talentPage.find('ul.selectlist').empty();
                     talentPage.find('#random').show();
-                    this.#totalMax = 20;
+                    this.#totalMax = 200;
                 },
             },
             property: {
