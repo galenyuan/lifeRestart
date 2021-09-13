@@ -105,6 +105,7 @@ class Talent {
         });
 
         result.push(talentList[3].find(item => item.id == 1048))
+        result.push(talentList[2].find(item => item.id == 1128))
 
         return result
     }
